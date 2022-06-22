@@ -1,0 +1,11 @@
+<label [for]="formDetails.key">{{formDetails.label}} <span *ngIf="formDetails.required">*</span></label>
+<ng-container *ngIf="formDetails.type==='text';else selectInput">
+  <input [type]="formDetails.type" [id]="formDetails.key" [formControl]="_control">
+</ng-container>
+<ng-template #selectInput>
+  <select>
+  </select>
+</ng-template>
+<div *ngIf="_control.invalid && (_control.dirty|| _control.touched)">
+  {{_ControlError}}
+</div>
